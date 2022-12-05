@@ -1,0 +1,32 @@
+{
+  "name": "tree-sitter-jqtpl",
+  "version": "0.0.1",
+  "description": "jqtpl grammar for tree-sitter",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lysander6/tree-sitter-jqtpl.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "jqtpl",
+    "parser",
+    "lexer",
+    "grammar"
+  ],
+  "author": "Lysander <lysander6@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lysander6/tree-sitter-jqtpl/issues"
+  },
+  "homepage": "https://github.com/Lysander6/tree-sitter-jqtpl#readme",
+  "dependencies": {
+    "nan": "^2.17.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.7"
+  }
+}
