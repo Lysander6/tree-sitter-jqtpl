@@ -1,0 +1,203 @@
+===========================
+Template without directives
+===========================
+
+<!DOCTYPE html>
+<html lnag="en-GB">
+  <head></head>
+  <body>
+    <p>
+      Hello, World!
+    </p>
+  </body>
+</html>
+
+-----
+
+(template
+  (content))
+
+================
+Output directive
+================
+
+<p>{{= some.variable }}</p>
+
+-----
+
+(template
+  (content)
+  (output_directive
+    (code))
+  (content))
+
+=================
+Comment directive
+=================
+
+<p>{{! some.variable }}</p>
+
+-----
+
+(template
+  (content)
+  (comment_directive
+    (comment))
+  (content))
+
+============
+If directive
+============
+
+<p>
+  {{if someValue == true}}
+    Hello, World!
+  {{/if}}
+</p>
+
+-----
+
+(template
+  (content)
+  (if_directive
+    condition: (code)
+    (content))
+  (content))
+
+======================
+If directive with else
+======================
+
+<p>
+  {{if someValue == true}}
+    Hello, World!
+  {{else}}
+    Goodbye!
+  {{/if}}
+</p>
+
+-----
+
+(template
+  (content)
+  (if_directive
+    condition: (code)
+    (content)
+    (else_directive
+      (content)))
+  (content))
+
+=========================
+If directive with if-else
+=========================
+
+<p>
+  {{if someValue == true}}
+    Hello, World!
+  {{else somethingElse == true}}
+    Goodbye!
+  {{/if}}
+</p>
+
+-----
+
+(template
+  (content)
+  (if_directive
+    condition: (code)
+    (content)
+    (else_directive
+      condition: (code)
+      (content)))
+  (content))
+
+==================================
+If directive with if-else and else
+==================================
+
+<p>
+  {{if someValue == true}}
+    Hello, World!
+  {{else somethingElse == true}}
+    Hello!
+  {{else}}
+    Goodbye!
+  {{/if}}
+</p>
+
+-----
+
+(template
+  (content)
+  (if_directive
+    condition: (code)
+    (content)
+    (else_directive
+      condition: (code)
+      (content))
+    (else_directive
+      (content)))
+  (content))
+
+==============
+Html directive
+==============
+
+<p>{{html some.thing}}</p>
+
+-----
+
+(template
+  (content)
+  (html_directive
+    (code))
+  (content))
+
+==============
+Each directive
+==============
+
+<ul>
+  {{each(i, item) some.array}}
+    <li>{{= item}}</li>
+  {{/each}}
+</ul>
+
+-----
+
+(template
+  (content)
+  (each_directive
+    (code)
+    (content))
+  (content))
+
+=================
+Partial directive
+=================
+
+<div>
+  {{partial({ some: 'variable' }) partials.somePartial}}
+</div>
+
+-----
+
+(template
+  (content)
+  (partial_directive (code) (code))
+  (content))
+
+====================================
+Partial directive with function call
+====================================
+
+<div>
+  {{partial({ some: 'variable', another: helper.do(thing) }) partials.somePartial()}}
+</div>
+
+-----
+
+(template
+  (content)
+  (partial_directive (code) (code))
+  (content))
