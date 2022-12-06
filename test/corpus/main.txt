@@ -184,7 +184,9 @@ Partial directive
 
 (template
   (content)
-  (partial_directive (code) (code))
+  (partial_directive
+    bindings: (code)
+    path: (code))
   (content))
 
 ====================================
@@ -199,5 +201,24 @@ Partial directive with function call
 
 (template
   (content)
-  (partial_directive (code) (code))
+  (partial_directive
+    bindings: (code)
+    path: (code))
+  (content))
+
+===================================
+Partial directive without variables
+===================================
+
+<div>
+  {{partial({}) partials.somePartial}}
+</div>
+
+-----
+
+(template
+  (content)
+  (partial_directive
+    bindings: (code)
+    path: (code))
   (content))

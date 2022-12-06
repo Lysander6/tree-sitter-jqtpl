@@ -49,12 +49,18 @@ module.exports = grammar({
     ),
     partial_directive: $ => seq(
       '{{partial(',
-      alias(
-        token(repeat(choice(/[^\(\)]*/, seq('(', /[^\(\)]*/, ')')))),
-        $.code,
+      field(
+        'bindings',
+        alias(
+          token(repeat(choice(/[^\(\)]*/, seq('(', /[^\(\)]*/, ')')))),
+          $.code,
+        ),
       ),
       ')',
-      $.code,
+      field(
+        'path',
+        $.code,
+      ),
       '}}',
     ),
   },

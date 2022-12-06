@@ -12,9 +12,9 @@
 #define ALIAS_COUNT 1
 #define TOKEN_COUNT 18
 #define EXTERNAL_TOKEN_COUNT 0
-#define FIELD_COUNT 1
+#define FIELD_COUNT 3
 #define MAX_ALIAS_SEQUENCE_LENGTH 10
-#define PRODUCTION_ID_COUNT 3
+#define PRODUCTION_ID_COUNT 4
 
 enum {
   aux_sym_code_token1 = 1,
@@ -259,21 +259,29 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
 };
 
 enum {
-  field_condition = 1,
+  field_bindings = 1,
+  field_condition = 2,
+  field_path = 3,
 };
 
 static const char * const ts_field_names[] = {
   [0] = NULL,
+  [field_bindings] = "bindings",
   [field_condition] = "condition",
+  [field_path] = "path",
 };
 
 static const TSFieldMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [2] = {.index = 0, .length = 1},
+  [3] = {.index = 1, .length = 2},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
   [0] =
     {field_condition, 1},
+  [1] =
+    {field_bindings, 1},
+    {field_path, 3},
 };
 
 static const TSSymbol ts_alias_sequences[PRODUCTION_ID_COUNT][MAX_ALIAS_SEQUENCE_LENGTH] = {
@@ -1478,8 +1486,8 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [51] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_content, 1),
   [53] = {.entry = {.count = 1, .reusable = false}}, SHIFT(4),
   [55] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_content, 1),
-  [57] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_partial_directive, 5),
-  [59] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_directive, 5),
+  [57] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_partial_directive, 5, .production_id = 3),
+  [59] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_partial_directive, 5, .production_id = 3),
   [61] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_each_directive, 5),
   [63] = {.entry = {.count = 1, .reusable = false}}, REDUCE(sym_each_directive, 5),
   [65] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_if_directive, 5, .production_id = 2),
