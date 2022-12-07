@@ -1,55 +1,54 @@
 module.exports = grammar({
   name: 'jqtpl',
+  extras: $ => [],
   rules: {
-    template: $ => repeat($._blerg),
-    _blerg: $ => prec.left(repeat1(choice(
-      $.output_directive,
-      $.html_directive,
+    template: $ => repeat($._node),
+
+    _node: $ => choice(
       $.comment_directive,
-      $.if_directive,
-      $.each_directive,
-      $.partial_directive,
       $.content,
-    ))),
-    code: $ => repeat1(/[^\{\}]+|\{|\}/),
-    content: $ => prec.left(repeat1(/[^\{\}]+|\{|\}/)),
+      $.each_directive,
+      $.html_directive,
+      $.if_directive,
+      $.output_directive,
+      $.partial_directive,
+    ),
+
+    code: $ => /[^\}\n]+/,
+    content: $ => /[^\{]+/,
+
     output_directive: $ => seq(
-      '{{',
-      token.immediate('='),
-      optional($.code),
-      '}}',
+      '{{=', optional($.code), '}}',
     ),
+
     html_directive: $ => seq(
-      '{{',
-      token.immediate('html'),
-      optional($.code),
-      '}}',
+      '{{html', optional($.code), '}}',
     ),
+
     comment_directive: $ => seq(
-      '{{!',
-      optional(alias($.code, $.comment)),
-      '}}',
+      '{{!', optional(alias($.code, $.comment)), '}}',
     ),
+
     if_directive: $ => seq(
-      '{{', token.immediate('if'), field('condition', optional($.code)), '}}',
-      optional($._blerg),
+      '{{if', field('condition', $.code), '}}',
+      repeat($._node),
       repeat($.else_directive),
-      '{{', token.immediate('/'), token.immediate('if'), token.immediate('}}')
+      '{{/if}}'
     ),
-    else_directive: $ => prec.left(seq(
-      '{{', token.immediate('else'), field('condition', optional($.code)), '}}',
-      optional($._blerg),
-    )),
+
+    else_directive: $ => seq(
+      '{{else', optional(field('condition', $.code)), '}}',
+      repeat($._node),
+    ),
+
     each_directive: $ => seq(
-      '{{', token.immediate('each'),
-      seq(token.immediate('('), /[^,]+/, ',', /[^)]+/, ')'),
-      $.code,
-      '}}',
-      repeat($._blerg),
-      '{{', token.immediate('/'), token.immediate('each'), token.immediate('}}'),
+      '{{each', token.immediate('('), /[^,]+/, ',', /[^)]+/, ')', optional($.code), '}}',
+      repeat($._node),
+      '{{/each}}'
     ),
+
     partial_directive: $ => seq(
-      '{{', 'partial', '(',
+      '{{partial', token.immediate('('),
       field(
         'bindings',
         alias(
@@ -58,10 +57,7 @@ module.exports = grammar({
         ),
       ),
       ')',
-      field(
-        'path',
-        $.code,
-      ),
+      field('path', $.code),
       '}}',
     ),
   },

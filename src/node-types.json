@@ -1,15 +1,5 @@
 [
   {
-    "type": "code",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "comment_directive",
     "named": true,
     "fields": {},
@@ -25,17 +15,12 @@
     }
   },
   {
-    "type": "content",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "each_directive",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "code",
@@ -143,7 +128,7 @@
     "fields": {
       "condition": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "code",
@@ -284,39 +269,51 @@
     "named": false
   },
   {
-    "type": "/",
-    "named": false
+    "type": "code",
+    "named": true
   },
   {
-    "type": "=",
-    "named": false
+    "type": "comment",
+    "named": true
   },
   {
-    "type": "each",
-    "named": false
-  },
-  {
-    "type": "else",
-    "named": false
-  },
-  {
-    "type": "html",
-    "named": false
-  },
-  {
-    "type": "if",
-    "named": false
-  },
-  {
-    "type": "partial",
-    "named": false
-  },
-  {
-    "type": "{{",
-    "named": false
+    "type": "content",
+    "named": true
   },
   {
     "type": "{{!",
+    "named": false
+  },
+  {
+    "type": "{{/each}}",
+    "named": false
+  },
+  {
+    "type": "{{/if}}",
+    "named": false
+  },
+  {
+    "type": "{{=",
+    "named": false
+  },
+  {
+    "type": "{{each",
+    "named": false
+  },
+  {
+    "type": "{{else",
+    "named": false
+  },
+  {
+    "type": "{{html",
+    "named": false
+  },
+  {
+    "type": "{{if",
+    "named": false
+  },
+  {
+    "type": "{{partial",
     "named": false
   },
   {

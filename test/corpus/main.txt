@@ -226,3 +226,37 @@ Partial directive without variables
     bindings: (code)
     path: (code))
   (content))
+
+================================
+Output directives nested in if-s
+================================
+
+<div>
+  {{if hello}}
+    <p>{{= hello}}</p>
+  {{else hi}}
+    <p>{{= hi}}</p>
+  {{else}}
+    <p>{{= goodbye}}</p>
+  {{/if}}
+</div>
+
+-----
+
+(template
+  (content)
+  (if_directive
+    condition: (code)
+    (content)
+    (output_directive (code))
+    (content)
+    (else_directive
+      condition: (code)
+      (content)
+      (output_directive (code))
+      (content))
+    (else_directive
+      (content)
+      (output_directive (code))
+      (content)))
+  (content))
