@@ -53,6 +53,10 @@
         {
           "type": "partial_directive",
           "named": true
+        },
+        {
+          "type": "var_directive",
+          "named": true
         }
       ]
     }
@@ -102,6 +106,10 @@
         },
         {
           "type": "partial_directive",
+          "named": true
+        },
+        {
+          "type": "var_directive",
           "named": true
         }
       ]
@@ -171,6 +179,10 @@
         },
         {
           "type": "partial_directive",
+          "named": true
+        },
+        {
+          "type": "var_directive",
           "named": true
         }
       ]
@@ -252,6 +264,25 @@
         {
           "type": "partial_directive",
           "named": true
+        },
+        {
+          "type": "var_directive",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "var_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "code",
+          "named": true
         }
       ]
     }
@@ -314,6 +345,10 @@
   },
   {
     "type": "{{partial",
+    "named": false
+  },
+  {
+    "type": "{{var",
     "named": false
   },
   {

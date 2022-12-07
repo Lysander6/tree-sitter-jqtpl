@@ -12,6 +12,7 @@ module.exports = grammar({
       $.if_directive,
       $.output_directive,
       $.partial_directive,
+      $.var_directive,
     ),
 
     code: $ => /[^\}\n]+/,
@@ -27,6 +28,10 @@ module.exports = grammar({
 
     comment_directive: $ => seq(
       '{{!', optional(alias($.code, $.comment)), '}}',
+    ),
+
+    var_directive: $ => seq(
+      '{{var', optional($.code), '}}',
     ),
 
     if_directive: $ => seq(

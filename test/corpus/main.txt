@@ -260,3 +260,17 @@ Output directives nested in if-s
       (output_directive (code))
       (content)))
   (content))
+
+=============
+Var directive
+=============
+
+{{var locals.foo = 'bar'}}
+
+-----
+
+(template
+  (content)
+  (var_directive
+    (code))
+  (content))
