@@ -212,39 +212,39 @@
     "named": false
   },
   {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "each",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "html",
+    "named": false
+  },
+  {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "partial",
+    "named": false
+  },
+  {
+    "type": "{{",
+    "named": false
+  },
+  {
     "type": "{{!",
-    "named": false
-  },
-  {
-    "type": "{{/each}}",
-    "named": false
-  },
-  {
-    "type": "{{/if}}",
-    "named": false
-  },
-  {
-    "type": "{{=",
-    "named": false
-  },
-  {
-    "type": "{{each",
-    "named": false
-  },
-  {
-    "type": "{{else",
-    "named": false
-  },
-  {
-    "type": "{{html",
-    "named": false
-  },
-  {
-    "type": "{{if",
-    "named": false
-  },
-  {
-    "type": "{{partial(",
     "named": false
   },
   {

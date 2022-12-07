@@ -28,5 +28,14 @@
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.7"
-  }
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.jqtpl",
+      "file-types": [
+        "jqtpl"
+      ],
+      "injection-regex": "jqtpl"
+    }
+  ]
 }

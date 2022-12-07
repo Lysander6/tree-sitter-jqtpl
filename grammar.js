@@ -13,12 +13,14 @@ module.exports = grammar({
     code: $ => repeat1(/[^\{\}]+|\{|\}/),
     content: $ => prec.right(repeat1(/[^\{]+|\{/)),
     output_directive: $ => seq(
-      '{{=',
+      '{{',
+      '=',
       optional($.code),
       '}}',
     ),
     html_directive: $ => seq(
-      '{{html',
+      '{{',
+      'html',
       optional($.code),
       '}}',
     ),
@@ -28,27 +30,27 @@ module.exports = grammar({
       '}}',
     ),
     if_directive: $ => seq(
-      '{{if', field('condition', optional($.code)), '}}',
+      '{{', 'if', field('condition', optional($.code)), '}}',
       optional($.content),
       repeat($.else_directive),
-      '{{/if}}'
+      '{{', '/', 'if', '}}'
     ),
     else_directive: $ => seq(
-      '{{else', field('condition', optional($.code)), '}}',
+      '{{', 'else', field('condition', optional($.code)), '}}',
       optional($.content),
     ),
     each_directive: $ => seq(
-      '{{each',
+      '{{', 'each',
       choice(
         seq('(', /\w+/, ',', /\w+/, ')', $.code),
         $.code,
       ),
       '}}',
       optional($.content),
-      '{{/each}}',
+      '{{', '/', 'each', '}}',
     ),
     partial_directive: $ => seq(
-      '{{partial(',
+      '{{', 'partial', '(',
       field(
         'bindings',
         alias(
