@@ -1,7 +1,8 @@
 module.exports = grammar({
   name: 'jqtpl',
   rules: {
-    template: $ => repeat(choice(
+    template: $ => repeat($._blerg),
+    _blerg: $ => prec.left(repeat1(choice(
       $.output_directive,
       $.html_directive,
       $.comment_directive,
@@ -9,18 +10,18 @@ module.exports = grammar({
       $.each_directive,
       $.partial_directive,
       $.content,
-    )),
+    ))),
     code: $ => repeat1(/[^\{\}]+|\{|\}/),
-    content: $ => prec.right(repeat1(/[^\{]+|\{/)),
+    content: $ => prec.left(repeat1(/[^\{\}]+|\{|\}/)),
     output_directive: $ => seq(
       '{{',
-      '=',
+      token.immediate('='),
       optional($.code),
       '}}',
     ),
     html_directive: $ => seq(
       '{{',
-      'html',
+      token.immediate('html'),
       optional($.code),
       '}}',
     ),
@@ -30,24 +31,22 @@ module.exports = grammar({
       '}}',
     ),
     if_directive: $ => seq(
-      '{{', 'if', field('condition', optional($.code)), '}}',
-      optional($.content),
+      '{{', token.immediate('if'), field('condition', optional($.code)), '}}',
+      optional($._blerg),
       repeat($.else_directive),
-      '{{', '/', 'if', '}}'
+      '{{', token.immediate('/'), token.immediate('if'), token.immediate('}}')
     ),
-    else_directive: $ => seq(
-      '{{', 'else', field('condition', optional($.code)), '}}',
-      optional($.content),
-    ),
+    else_directive: $ => prec.left(seq(
+      '{{', token.immediate('else'), field('condition', optional($.code)), '}}',
+      optional($._blerg),
+    )),
     each_directive: $ => seq(
-      '{{', 'each',
-      choice(
-        seq('(', /\w+/, ',', /\w+/, ')', $.code),
-        $.code,
-      ),
+      '{{', token.immediate('each'),
+      seq(token.immediate('('), /[^,]+/, ',', /[^)]+/, ')'),
+      $.code,
       '}}',
-      optional($.content),
-      '{{', '/', 'each', '}}',
+      repeat($._blerg),
+      '{{', token.immediate('/'), token.immediate('each'), token.immediate('}}'),
     ),
     partial_directive: $ => seq(
       '{{', 'partial', '(',

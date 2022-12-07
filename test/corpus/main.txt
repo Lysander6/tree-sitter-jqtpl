@@ -159,7 +159,9 @@ Each directive
 
 <ul>
   {{each(i, item) some.array}}
-    <li>{{= item}}</li>
+    <li>
+      {{= ztem}}
+    </li>
   {{/each}}
 </ul>
 
@@ -169,6 +171,8 @@ Each directive
   (content)
   (each_directive
     (code)
+    (content)
+    (output_directive (code))
     (content))
   (content))
 

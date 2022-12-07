@@ -42,7 +42,31 @@
           "named": true
         },
         {
+          "type": "comment_directive",
+          "named": true
+        },
+        {
           "type": "content",
+          "named": true
+        },
+        {
+          "type": "each_directive",
+          "named": true
+        },
+        {
+          "type": "html_directive",
+          "named": true
+        },
+        {
+          "type": "if_directive",
+          "named": true
+        },
+        {
+          "type": "output_directive",
+          "named": true
+        },
+        {
+          "type": "partial_directive",
           "named": true
         }
       ]
@@ -64,11 +88,35 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
+          "type": "comment_directive",
+          "named": true
+        },
+        {
           "type": "content",
+          "named": true
+        },
+        {
+          "type": "each_directive",
+          "named": true
+        },
+        {
+          "type": "html_directive",
+          "named": true
+        },
+        {
+          "type": "if_directive",
+          "named": true
+        },
+        {
+          "type": "output_directive",
+          "named": true
+        },
+        {
+          "type": "partial_directive",
           "named": true
         }
       ]
@@ -109,11 +157,35 @@
       "required": false,
       "types": [
         {
+          "type": "comment_directive",
+          "named": true
+        },
+        {
           "type": "content",
           "named": true
         },
         {
+          "type": "each_directive",
+          "named": true
+        },
+        {
           "type": "else_directive",
+          "named": true
+        },
+        {
+          "type": "html_directive",
+          "named": true
+        },
+        {
+          "type": "if_directive",
+          "named": true
+        },
+        {
+          "type": "output_directive",
+          "named": true
+        },
+        {
+          "type": "partial_directive",
           "named": true
         }
       ]
