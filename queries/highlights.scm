@@ -1,4 +1,4 @@
-(comment_directive) @comment
+(comment_directive "!" @comment) @comment
 
 ((content) @injection.content
  (#set! injection.language "html"))
@@ -7,15 +7,14 @@
  (#set! injection.language "javascript"))
 
 [
- "{{if"
- "{{/if}}"
- "{{else"
- "{{each"
- "{{html"
- "{{partial"
- "{{var"
- "{{="
- "}}"
+ "if"
+ "else"
+ "each"
+ "html"
+ "partial"
+ "var"
+ "!"
+ "="
 ] @keyword
 
 [
@@ -23,6 +22,9 @@
 ] @punctuation.delimiter
 
 [
+ "{{"
+ "}}"
+ "{{/"
  "("
  ")"
 ] @punctuation.bracket

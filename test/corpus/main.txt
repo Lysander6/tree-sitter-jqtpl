@@ -61,7 +61,7 @@ If directive
   (content)
   (if_directive
     condition: (code)
-    (content))
+    consequence: (content))
   (content))
 
 ======================
@@ -82,9 +82,9 @@ If directive with else
   (content)
   (if_directive
     condition: (code)
-    (content)
-    (else_directive
-      (content)))
+    consequence: (content)
+    alternative: (else_directive
+      consequence: (content)))
   (content))
 
 =========================
@@ -105,10 +105,10 @@ If directive with if-else
   (content)
   (if_directive
     condition: (code)
-    (content)
-    (else_directive
+    consequence: (content)
+    alternative: (else_directive
       condition: (code)
-      (content)))
+      consequence: (content)))
   (content))
 
 ==================================
@@ -131,12 +131,12 @@ If directive with if-else and else
   (content)
   (if_directive
     condition: (code)
-    (content)
-    (else_directive
+    consequence: (content)
+    alternative: (else_directive
       condition: (code)
-      (content))
-    (else_directive
-      (content)))
+      consequence: (content)
+      alternative: (else_directive
+        consequence: (content))))
   (content))
 
 ==============
@@ -172,7 +172,8 @@ Each directive
   (each_directive
     (code)
     (content)
-    (output_directive (code))
+    (output_directive
+      (code))
     (content))
   (content))
 
@@ -247,18 +248,21 @@ Output directives nested in if-s
   (content)
   (if_directive
     condition: (code)
-    (content)
-    (output_directive (code))
-    (content)
-    (else_directive
+    consequence: (content)
+    consequence: (output_directive
+      (code))
+    consequence: (content)
+    alternative: (else_directive
       condition: (code)
-      (content)
-      (output_directive (code))
-      (content))
-    (else_directive
-      (content)
-      (output_directive (code))
-      (content)))
+      consequence: (content)
+      consequence: (output_directive
+        (code))
+      consequence: (content)
+      alternative: (else_directive
+      consequence: (content)
+      consequence: (output_directive
+        (code))
+      consequence: (content))))
   (content))
 
 =============

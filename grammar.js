@@ -19,41 +19,42 @@ module.exports = grammar({
     content: $ => /[^\{]+/,
 
     output_directive: $ => seq(
-      '{{=', optional($.code), '}}',
+      '{{', token.immediate('='), optional($.code), '}}',
     ),
 
     html_directive: $ => seq(
-      '{{html', optional($.code), '}}',
+      '{{', token.immediate('html'), optional($.code), '}}',
     ),
 
     comment_directive: $ => seq(
-      '{{!', optional(alias($.code, $.comment)), '}}',
+      '{{', token.immediate('!'), optional(alias($.code, $.comment)), '}}',
     ),
 
     var_directive: $ => seq(
-      '{{var', optional($.code), '}}',
+      '{{', token.immediate('var'), optional($.code), '}}',
     ),
 
     if_directive: $ => seq(
-      '{{if', field('condition', $.code), '}}',
-      repeat($._node),
-      repeat($.else_directive),
-      '{{/if}}'
+      '{{', token.immediate('if'), field('condition', $.code), '}}',
+      field('consequence', repeat($._node)),
+      optional(field('alternative', $.else_directive)),
+      '{{/', token.immediate('if'), token.immediate('}}'),
     ),
 
-    else_directive: $ => seq(
-      '{{else', optional(field('condition', $.code)), '}}',
-      repeat($._node),
-    ),
+    else_directive: $ => prec.left(seq(
+      '{{', token.immediate('else'), optional(field('condition', $.code)), '}}',
+      field('consequence', repeat($._node)),
+      optional(field('alternative', $.else_directive)),
+    )),
 
     each_directive: $ => seq(
-      '{{each', token.immediate('('), /[^,]+/, ',', /[^)]+/, ')', optional($.code), '}}',
+      '{{', token.immediate('each'), token.immediate('('), /[^,]+/, ',', /[^)]+/, ')', optional($.code), '}}',
       repeat($._node),
-      '{{/each}}'
+      '{{/', token.immediate('each'), token.immediate('}}'),
     ),
 
     partial_directive: $ => seq(
-      '{{partial', token.immediate('('),
+      '{{', token.immediate('partial'), token.immediate('('),
       field(
         'bindings',
         alias(

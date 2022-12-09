@@ -65,6 +65,16 @@
     "type": "else_directive",
     "named": true,
     "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "else_directive",
+            "named": true
+          }
+        ]
+      },
       "condition": {
         "multiple": false,
         "required": false,
@@ -74,45 +84,45 @@
             "named": true
           }
         ]
+      },
+      "consequence": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "comment_directive",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "each_directive",
+            "named": true
+          },
+          {
+            "type": "html_directive",
+            "named": true
+          },
+          {
+            "type": "if_directive",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "partial_directive",
+            "named": true
+          },
+          {
+            "type": "var_directive",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "comment_directive",
-          "named": true
-        },
-        {
-          "type": "content",
-          "named": true
-        },
-        {
-          "type": "each_directive",
-          "named": true
-        },
-        {
-          "type": "html_directive",
-          "named": true
-        },
-        {
-          "type": "if_directive",
-          "named": true
-        },
-        {
-          "type": "output_directive",
-          "named": true
-        },
-        {
-          "type": "partial_directive",
-          "named": true
-        },
-        {
-          "type": "var_directive",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -134,6 +144,16 @@
     "type": "if_directive",
     "named": true,
     "fields": {
+      "alternative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "else_directive",
+            "named": true
+          }
+        ]
+      },
       "condition": {
         "multiple": false,
         "required": true,
@@ -143,49 +163,45 @@
             "named": true
           }
         ]
+      },
+      "consequence": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "comment_directive",
+            "named": true
+          },
+          {
+            "type": "content",
+            "named": true
+          },
+          {
+            "type": "each_directive",
+            "named": true
+          },
+          {
+            "type": "html_directive",
+            "named": true
+          },
+          {
+            "type": "if_directive",
+            "named": true
+          },
+          {
+            "type": "output_directive",
+            "named": true
+          },
+          {
+            "type": "partial_directive",
+            "named": true
+          },
+          {
+            "type": "var_directive",
+            "named": true
+          }
+        ]
       }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "comment_directive",
-          "named": true
-        },
-        {
-          "type": "content",
-          "named": true
-        },
-        {
-          "type": "each_directive",
-          "named": true
-        },
-        {
-          "type": "else_directive",
-          "named": true
-        },
-        {
-          "type": "html_directive",
-          "named": true
-        },
-        {
-          "type": "if_directive",
-          "named": true
-        },
-        {
-          "type": "output_directive",
-          "named": true
-        },
-        {
-          "type": "partial_directive",
-          "named": true
-        },
-        {
-          "type": "var_directive",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -288,6 +304,10 @@
     }
   },
   {
+    "type": "!",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -297,6 +317,10 @@
   },
   {
     "type": ",",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {
@@ -312,43 +336,35 @@
     "named": true
   },
   {
-    "type": "{{!",
+    "type": "each",
     "named": false
   },
   {
-    "type": "{{/each}}",
+    "type": "else",
     "named": false
   },
   {
-    "type": "{{/if}}",
+    "type": "html",
     "named": false
   },
   {
-    "type": "{{=",
+    "type": "if",
     "named": false
   },
   {
-    "type": "{{each",
+    "type": "partial",
     "named": false
   },
   {
-    "type": "{{else",
+    "type": "var",
     "named": false
   },
   {
-    "type": "{{html",
+    "type": "{{",
     "named": false
   },
   {
-    "type": "{{if",
-    "named": false
-  },
-  {
-    "type": "{{partial",
-    "named": false
-  },
-  {
-    "type": "{{var",
+    "type": "{{/",
     "named": false
   },
   {
