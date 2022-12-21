@@ -15,8 +15,8 @@ module.exports = grammar({
       $.var_directive,
     ),
 
-    code: $ => /[^\}\n]+/,
-    content: $ => /[^\{]+/,
+    code: $ => /[^\}\n]+|[^\}\n]+\}[^\}\n]+/,
+    content: $ => /[^\{]+|\{[^\{]+/,
 
     output_directive: $ => seq(
       '{{', token.immediate('='), optional($.code), '}}',
