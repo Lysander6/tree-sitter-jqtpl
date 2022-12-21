@@ -51,7 +51,7 @@
     },
     "content": {
       "type": "PATTERN",
-      "value": "[^\\{]+|\\{[^\\{]+"
+      "value": "[^\\{]+|[^\\{]+\\{[^\\{]+"
     },
     "output_directive": {
       "type": "SEQ",

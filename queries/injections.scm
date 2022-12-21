@@ -1,0 +1,3 @@
+(code) @javascript
+
+(content) @html
