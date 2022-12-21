@@ -1,3 +1,3 @@
-(code) @javascript
+(code) @javascript @combined
 
-(content) @html
+(content) @html @combined
