@@ -278,3 +278,19 @@ Var directive
   (var_directive
     (code))
   (content))
+
+======================================
+Var directive with nested curly braces
+======================================
+
+{{var locals.images = helpers.ImageHelper.getImages(lodash, { url: author.authorPhoto }, { targetWidth: locals.photoSize, targetHeight: locals.photoSize, noCrop: false })}}
+<p>{{= author.authorUrl}}</p>
+
+-----
+
+(template 
+  (content)
+  (var_directive (code))
+  (content)
+  (output_directive (code))
+  (content))
