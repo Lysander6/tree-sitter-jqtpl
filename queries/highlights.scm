@@ -11,7 +11,7 @@
  "else"
  "each"
  "html"
- "partial"
+ "tmpl"
  "var"
  "!"
  "="

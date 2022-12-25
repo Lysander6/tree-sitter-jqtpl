@@ -54,7 +54,7 @@ module.exports = grammar({
     ),
 
     partial_directive: $ => seq(
-      '{{', token.immediate('partial'), token.immediate('('),
+      '{{', token.immediate('tmpl'), token.immediate('('),
       field(
         'bindings',
         alias(

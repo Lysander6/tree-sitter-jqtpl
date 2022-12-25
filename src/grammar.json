@@ -437,7 +437,7 @@
           "type": "IMMEDIATE_TOKEN",
           "content": {
             "type": "STRING",
-            "value": "partial"
+            "value": "tmpl"
           }
         },
         {

@@ -182,7 +182,7 @@ Partial directive
 =================
 
 <div>
-  {{partial({ some: 'variable' }) partials.somePartial}}
+  {{tmpl({ some: 'variable' }) partials.somePartial}}
 </div>
 
 -----
@@ -199,7 +199,7 @@ Partial directive with function call
 ====================================
 
 <div>
-  {{partial({ some: 'variable', another: helper.do(thing) }) partials.somePartial()}}
+  {{tmpl({ some: 'variable', another: helper.do(thing) }) partials.somePartial()}}
 </div>
 
 -----
@@ -216,7 +216,7 @@ Partial directive without variables
 ===================================
 
 <div>
-  {{partial({}) partials.somePartial}}
+  {{tmpl({}) partials.somePartial}}
 </div>
 
 -----
