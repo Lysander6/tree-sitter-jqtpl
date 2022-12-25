@@ -276,7 +276,8 @@ Var directive
 (template
   (content)
   (var_directive
-    (code))
+    var_name: (code)
+    var_value: (code))
   (content))
 
 ======================================
@@ -290,7 +291,9 @@ Var directive with nested curly braces
 
 (template 
   (content)
-  (var_directive (code))
+  (var_directive 
+    var_name: (code)
+    var_value: (code))
   (content)
   (output_directive (code))
   (content))

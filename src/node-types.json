@@ -301,17 +301,36 @@
   {
     "type": "var_directive",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "code",
-          "named": true
-        }
-      ]
+    "fields": {
+      "var_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "code",
+            "named": true
+          }
+        ]
+      },
+      "var_value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "code",
+            "named": true
+          }
+        ]
+      }
     }
+  },
+  {
+    "type": " ",
+    "named": false
+  },
+  {
+    "type": " = ",
+    "named": false
   },
   {
     "type": "!",

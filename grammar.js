@@ -31,7 +31,7 @@ module.exports = grammar({
     ),
 
     var_directive: $ => seq(
-      '{{', token.immediate('var'), optional($.code), '}}',
+      '{{', token.immediate('var'), ' ', field('var_name', alias(/[a-zA-Z0-9_\.]+/, $.code)), ' = ', field('var_value', $.code), '}}',
     ),
 
     if_directive: $ => seq(
