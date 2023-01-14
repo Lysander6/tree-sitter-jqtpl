@@ -17,7 +17,7 @@ module.exports = grammar({
 
     code: $ => repeat1(/}[^\n\r\}]+|[^\n\r\}]+/),
     // code: $ => repeat1(/[^\n\r\}]+}[^\n\r\}]+|}[^\n\r\}]+|[^\n\r\}]+/),
-    content: $ => /[^\{]+|[^\{]+\{[^\{]+/,
+    content: $ => prec.right(repeat1(/[^\{](\{?[^\{]+)*/)),
 
     output_directive: $ => seq(
       '{{', token.immediate('='), optional($.code), '}}',

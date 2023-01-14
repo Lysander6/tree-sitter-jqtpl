@@ -25,6 +25,11 @@
     }
   },
   {
+    "type": "content",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "each_directive",
     "named": true,
     "fields": {},
@@ -351,10 +356,6 @@
   {
     "type": "=",
     "named": false
-  },
-  {
-    "type": "content",
-    "named": true
   },
   {
     "type": "each",

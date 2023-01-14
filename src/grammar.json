@@ -53,8 +53,15 @@
       }
     },
     "content": {
-      "type": "PATTERN",
-      "value": "[^\\{]+|[^\\{]+\\{[^\\{]+"
+      "type": "PREC_RIGHT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "PATTERN",
+          "value": "[^\\{](\\{?[^\\{]+)*"
+        }
+      }
     },
     "output_directive": {
       "type": "SEQ",
