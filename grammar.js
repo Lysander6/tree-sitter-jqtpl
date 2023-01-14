@@ -15,7 +15,8 @@ module.exports = grammar({
       $.var_directive,
     ),
 
-    code: $ => repeat1(/[^\n\r\}]}+|}[^\n\r\}]+|[^\n\r\}]+/),
+    code: $ => repeat1(/}[^\n\r\}]+|[^\n\r\}]+/),
+    // code: $ => repeat1(/[^\n\r\}]+}[^\n\r\}]+|}[^\n\r\}]+|[^\n\r\}]+/),
     content: $ => /[^\{]+|[^\{]+\{[^\{]+/,
 
     output_directive: $ => seq(
